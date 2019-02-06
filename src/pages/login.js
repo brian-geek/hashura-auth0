@@ -8,6 +8,7 @@ import {
       e.preventDefault();
       this.props.form.validateFields((err, values) => {
         if (!err) {
+          this.props.auth.login(values);
           console.log('Received values of form: ', values);
         }
       });
@@ -19,10 +20,10 @@ import {
         <div className="container form-login-ant"><br/>
           <Form onSubmit={this.handleSubmit} className="login-form">
               <Form.Item>
-                  {getFieldDecorator('userName', {
-                  rules: [{ required: true, message: 'Please input your username!' }],
+                  {getFieldDecorator('email', {
+                  rules: [{ required: true, message: 'Please input your email!' }],
                   })(
-                  <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                  <Input prefix={<Icon type="email" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="email" />
                   )}
               </Form.Item>
               <Form.Item>

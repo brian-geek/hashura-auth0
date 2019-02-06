@@ -56,7 +56,7 @@ class Routes extends Component {
           <Switch>
             <Route
               path="/login"
-              render={props => (auth.isAuthenticated() ? <Redirect to="/dashboard" /> : <Login />)}
+              render={props => (auth.isAuthenticated() ? <Redirect to="/dashboard" /> : <Login auth={auth} />)}
             />
             <Route
             exact
