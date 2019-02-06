@@ -3,8 +3,8 @@ import history from "./history";
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
-    domain: "victory85.auth0.com",
-    clientID: "_Vyl5Ht7Xfu85eXhtUoVJEHL6xNkjTb5",
+    domain: "mavrik.auth0.com",
+    clientID: "mC0waT1JvCfxFuTxvNvmi3AMq1bmjCKT",
     redirectUri: "http://localhost:3000/callback",
     responseType: "token id_token",
     scope: "openid"
@@ -22,6 +22,8 @@ export default class Auth {
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
+      console.log('authResult-------->');
+      console.log(authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         // Redirect to dashboard
@@ -59,7 +61,7 @@ export default class Auth {
 
     // Set user info and tokens in local storage.
     localStorage.setItem("user", authResult.idTokenPayload.sub);
-    localStorage.setItem("id_token", this.accessToken);
+    localStorage.setItem("id_token", this.idToken);
     localStorage.setItem("access_token", this.accessToken);
     localStorage.setItem("expires_at", expiresAt);
     this.expiresAt = expiresAt;
