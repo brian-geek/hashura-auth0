@@ -12,6 +12,7 @@ export const getIncompleteTodos = gql`
   {
     profile {
       name
+      age
     }
   }
 `;

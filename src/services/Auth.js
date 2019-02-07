@@ -104,10 +104,10 @@ export default class Auth {
       username: values.email,
       password: values.password
     }, function(err) {
-      if (err) alert(err);
+      if (err) console.log(err);
     });
   }
-  
+
   signup(values) {
     var databaseConnection = 'Username-Password-Authentication';
     this.auth0.redirect.signupAndLogin({
@@ -115,9 +115,7 @@ export default class Auth {
       email: values.email,
       password: values.password
     }, function(err) {
-      if (err) alert(err);
+      if (err) console.log(err);
     });
   }
-
-
 }

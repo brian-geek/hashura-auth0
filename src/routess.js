@@ -36,7 +36,7 @@ class Routes extends Component {
           <div className="navbar navbar-default navbar-inverse container-fluid">
             <div className="container">
             <div className="navbar-header">
-              <a className="navbar-brand" href="#"><h3>MavrikCRM</h3></a>
+              <h3>MavrikCRM</h3>
             </div>
             <div className="navbar-collapse">
               <ul className="nav navbar-nav navbar-right">

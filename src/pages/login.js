@@ -16,14 +16,15 @@ import {
   
     render() {
       const { getFieldDecorator } = this.props.form;
+      console.log(getFieldDecorator);
       return (
-        <div className="container form-login-ant"><br/>
+        // <div className="container"><br/>
           <Form onSubmit={this.handleSubmit} className="login-form">
               <Form.Item>
-                  {getFieldDecorator('email', {
+                  {getFieldDecorator('userName', {
                   rules: [{ required: true, message: 'Please input your email!' }],
                   })(
-                  <Input prefix={<Icon type="email" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="email" />
+                  <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="email" />
                   )}
               </Form.Item>
               <Form.Item>
@@ -40,14 +41,14 @@ import {
                   })(
                   <Checkbox>Remember me</Checkbox>
                   )}
-                  <a className="login-form-forgot" href="">Forgot password</a>
-                  <Button type="primary" htmlType="submit" className="login-form-button" style={{width: 270}}>
+                  {/* <a className="login-form-forgot" href="/forgot">Forgot password</a> */}
+                  <Button type="primary" htmlType="submit" className="login-form-button">
                   Log in
                   </Button>
-                  <a href="">register now!</a>
+                  {/* <a href="/signup">register now!</a> */}
               </Form.Item>
           </Form>
-        </div>
+        // </div>
       );
     }
   }
