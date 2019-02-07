@@ -12,6 +12,8 @@ export default class Auth {
   userProfile;
   constructor() {
     this.login = this.login.bind(this);
+    this.signup = this.signup.bind(this);
+    this.loginDefault = this.loginDefault.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
@@ -90,7 +92,30 @@ export default class Auth {
     history.replace("/");
   }
 
-  login() {
+  loginDefault() {
     this.auth0.authorize();
+  }
+  
+  login(values) {
+    console.log(values);
+    var databaseConnection = 'Username-Password-Authentication';
+    this.auth0.login({
+      realm: databaseConnection,
+      username: values.email,
+      password: values.password
+    }, function(err) {
+      if (err) console.log(err);
+    });
+  }
+
+  signup(values) {
+    var databaseConnection = 'Username-Password-Authentication';
+    this.auth0.redirect.signupAndLogin({
+      connection: databaseConnection,
+      email: values.email,
+      password: values.password
+    }, function(err) {
+      if (err) console.log(err);
+    });
   }
 }
