@@ -10,7 +10,7 @@ const GetTodos = () => (
       console.log(data);
       if (loading) return <h2>Loading... </h2>;
       if (error) return `Error! fetching todos.`;
-      if (data.todos.length === 0)
+      if (data.profile.length === 0)
         return (
           <div>
             <h3>No Todos Created Yet</h3>
@@ -20,9 +20,9 @@ const GetTodos = () => (
         <div>
           <Card title="This is the testing example.">
             <h4>Datas from PostgresDB by using Hasura.</h4>
-            {data.todos.map(todo => (
-              <ul>
-                <li>{todo.todo_text}</li>
+            {data.profile.map((todo, _id) => (
+              <ul key={_id}>
+                <li>{todo.name}</li>
               </ul>
             ))}
             <Input placeholder="Add the info" />

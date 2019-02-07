@@ -27,6 +27,7 @@ class Routes extends Component {
           <Route
             path="/callback"
             render={props => {
+              console.log(props);
               handleAuthentication(props);
               return <div>loading</div>;
             }}

@@ -8,9 +8,10 @@ export var client;
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    const ACCESS_TOKEN = localStorage.getItem("access_token");
+    const ACCESS_TOKEN = localStorage.getItem("id_token");
+    console.log(ACCESS_TOKEN);
     client = new ApolloClient({
-      uri: "https://test-ant1.herokuapp.com/v1alpha1/graphql",
+      uri: "https://mavrik-crm.herokuapp.com/v1alpha1/graphql",
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`
       }
