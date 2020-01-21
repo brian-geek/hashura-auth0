@@ -4,16 +4,18 @@ import history from "./history";
 const DB_CONNECTION = 'Username-Password-Authentication';
 
 export default class Auth {
-  auth0 = new auth0.WebAuth({
-    domain: "mavrik.auth0.com",
-    clientID: "mC0waT1JvCfxFuTxvNvmi3AMq1bmjCKT",
-    redirectUri: "http://localhost:3000/callback",
-    responseType: "token id_token",
-    scope: "openid"
-  });
+  constructor() {
+    this.webAuth = new auth0.WebAuth({
+      domain: 'nikopass.auth0.com',
+      clientID: 'P3Qthgs32mtFjyy5wKXARZa0OtdkQM65',
+      redirectUri: 'http://localhost:3000/callback',
+      responseType: "token id_token",
+      scope: "openid"
+    });
+  }
 
   handleAuthentication = () => {
-    this.auth0.parseHash((err, authResult) => {
+    this.webAuth.parseHash((err, authResult) => {
       console.log(authResult);
       if (
         authResult &&
@@ -61,7 +63,7 @@ export default class Auth {
     this.expiresAt = expiresAt;
   }
   renewSession = () => {
-    this.auth0.checkSession({}, (err, authResult) => {
+    this.webAuth.checkSession({}, (err, authResult) => {
       if(
         authResult &&
         authResult.accessToken &&
@@ -87,10 +89,10 @@ export default class Auth {
     history.replace("/");
   }
   loginDefault = () => {
-    this.auth0.authorize();
+    this.webAuth.authorize();
   }
   login = values => {
-    this.auth0.login(
+    this.webAuth.login(
       {
         realm: DB_CONNECTION,
         username: values.email,
@@ -104,7 +106,7 @@ export default class Auth {
     );
   }
   signup = values => {
-    this.auth0.redirect.signupAndLogin(
+    this.webAuth.redirect.signupAndLogin(
       {
         connection: DB_CONNECTION,
         email: values.email,

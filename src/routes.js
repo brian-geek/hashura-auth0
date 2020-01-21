@@ -17,6 +17,7 @@ const handleAuthentication = ({ location }) => {
 
 class Routes extends Component {
   render() {
+    console.log('process.env.AUTH_DOMAIN', process.env.AUTH_DOMAIN);
     return (
       <Router history={history}>
         <div className="firstPg">
@@ -33,7 +34,7 @@ class Routes extends Component {
                       Sign out
                     </Link>
                   ) : (
-                    <Link to="/login">Sign in</Link>
+                    <Link to="/login" onClick={auth.loginDefault}>Sign in</Link>
                   )}
                 </li>
               </ul>
@@ -41,10 +42,10 @@ class Routes extends Component {
             </div>
           </div>
           <Switch>
-            <Route
+            {/* <Route
               path="/login"
               render={props => (auth.isAuthenticated() ? <Redirect to="/dashboard" /> : <Login auth={auth} />)}
-            />
+            /> */}
             <Route
               path="/signup"
               render={props => <Signup auth={auth} {...props} />}
