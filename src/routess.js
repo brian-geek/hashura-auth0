@@ -16,27 +16,11 @@ class Routes extends Component {
   render() {
     return (
       <Router history={history}>
-        {/* <div className="container">
-          <Route path="/" render={props => <App auth={auth} {...props} />} />
-          <Route
-            exact
-            path="/dashboard"
-            render={props => <Dashboard auth={auth} {...props} />}
-          />
-          <Route
-            path="/callback"
-            render={props => {
-              console.log(props);
-              handleAuthentication(props);
-              return <div>loading</div>;
-            }}
-          />
-        </div> */}
         <div className="firstPg">
           <div className="navbar navbar-default navbar-inverse container-fluid">
             <div className="container">
             <div className="navbar-header">
-              <h3>MavrikCRM</h3>
+              <h3>Auth0...</h3>
             </div>
             <div className="navbar-collapse">
               <ul className="nav navbar-nav navbar-right">

@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-// import Button from "antd/lib/button";
-// import "antd/dist/antd.css";
-// import "antd/lib/button/style/css";
-// import Login from './pages/login';
-//antui+hasura backend auth and user list"
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +14,6 @@ class App extends Component {
   }
   render() {
     const { isAuthenticated } = this.props.auth;
-    console.log('isAuthenticated----->');
     console.log(isAuthenticated());
     return (
       <div>
