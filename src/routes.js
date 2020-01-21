@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Route, Router, Link, Redirect, Switch } from "react-router-dom";
-import Login from './pages/login';
-import Dashboard from "./pages/dashboard";
+
+import Login from './components/Authentication/Login';
+import Signup from './components/Authentication/Signup';
+import Dashboard from "./components/Authentication/Dashboard";
+
 import Auth from "./services/Auth";
 import history from "./services/history";
 
@@ -43,9 +46,13 @@ class Routes extends Component {
               render={props => (auth.isAuthenticated() ? <Redirect to="/dashboard" /> : <Login auth={auth} />)}
             />
             <Route
-            exact
-            path="/dashboard"
-            render={props => <Dashboard auth={auth} {...props} />}
+              path="/signup"
+              render={props => <Signup auth={auth} {...props} />}
+            />
+            <Route
+              exact
+              path="/dashboard"
+              render={props => <Dashboard auth={auth} {...props} />}
             />
             <Route
               path="/callback"

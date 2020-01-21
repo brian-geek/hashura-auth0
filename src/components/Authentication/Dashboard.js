@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import GetTodos from "../components/getTodo";
+import GetTodos from "../QueryComponents/getTodo";
 
 export var client;
 
