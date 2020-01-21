@@ -1,0 +1,17 @@
+.app-auth-login {
+  padding: 20px;
+}
+
+.app-auth-login__form {
+  text-align: center;
+  width: 300px;
+}
+
+.app-auth-login__form-item {
+  padding: 10px;
+}
+
+.app-auth-login__form-item--btn {
+  padding: 10px;
+  display: flex;
+}
