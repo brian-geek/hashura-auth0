@@ -9,8 +9,10 @@ export default class Auth {
       domain: 'nikopass.auth0.com',
       clientID: 'P3Qthgs32mtFjyy5wKXARZa0OtdkQM65',
       redirectUri: 'http://localhost:3000/callback',
+      audience: 'https://nikopass.auth0.com/api/v2/',
       responseType: "token id_token",
-      scope: "openid"
+      scope: "openid profile email update:users read:current_user update:current_user_identities" +
+      " create:current_user_metadata update:current_user_metadata delete:current_user_metadata"
     });
   }
 
@@ -29,6 +31,20 @@ export default class Auth {
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
+  }
+
+  setUserInfo = () => {
+    this.webAuth.client.userInfo(
+      localStorage.getItem('access_token'),
+      (err, user) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.error('user', user);
+        localStorage.setItem('user', user);
+      }
+    );
   }
 
   isAuthenticated = () => {
